@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>工单申请</title>
+    <title>我的工单——详情页</title>
     <link rel="stylesheet" href="/css/thirdParty/bootstrap.css">
+    <link rel="stylesheet" href="/plugins/layui/css/layui.css">
     <link rel="stylesheet" href="/css/thirdParty/bootstrap-datetimepicker.css">
     <link rel="stylesheet" href="/css/thirdParty/bootstrap-table.min.css">
 
@@ -36,7 +37,7 @@
                     <td>ddddddddddd</td>
                     <td><label>剩余处理时间：</label></td>
                     <td>ddddddddddd</td>
-                    <td><button type="button" class="btn btn-default btn-sm">提交审核验收</button></td>
+                    <td><button type="button" id="summitreview" class="btn btn-default btn-sm">提交审核验收</button></td>
                 </tr>
             </table>
         </div>
@@ -44,36 +45,76 @@
             <div class="col-sm-6">
                 <div class="panel panel-default">
                     <div class="panel-heading">工单类型</div>
+                    <ul class="list-group">
+                        <li class="list-group-item">标题：</li>
+                    </ul>
                     <div class="panel-body">
-                        Panel content
+                        <p>内容描述</p>
                     </div>
                 </div>
                 <div class="panel panel-default">
-                    <div class="panel-heading">工单服务记录</div>
+                    <div class="panel-heading form-inline" style="margin-bottom:5px;">
+                        <span>工单服务记录</span>
+                        <div class="form-group" style="margin-left:100px;margin-top:0px;">
+                            <label for="" style="font-weight:normal;">类型:</label>
+                            <select name="" id="" class="form-control">
+                            <option value="">1</option>
+                            <option value="">2</option>
+                            </select>
+                        </div>
+                    </div>
+
                     <div class="panel-body">
-                        Panel content
+                        <table id="orderservicetable"></table>
+                        <form action="#">
+                            <div class="form-group">
+                                <textarea class="form-control" rows="10" placeholder="请输入回复内容" style="width:100%;"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-2 control-label">上传附件:</label>
+                                <div class="col-sm-3">
+                                    <input type="file" id="fileinput" accept=".doc,.jpg,.png,.pdf,.docx">
+                                </div>
+                                <div class="col-sm-1">
+                                    <button class="btn btn-danger btn-xs deletefilebtn" style="width:50px;">删除</button>
+                                </div>
+                                <p class="help-block fileinputhelp"></p>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="margin-left:200px;margin-top:10px;">回复</button>
+                        </form>
                     </div>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="panel panel-default">
                     <div class="panel-heading">工单信息</div>
-                    <div class="panel-body">
-                        Panel content
-                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">工单号：</li>
+                        <li class="list-group-item">紧急程度：</li>
+                        <li class="list-group-item">创建时间：</li>
+                        <li class="list-group-item">发起人：</li>
+                        <li class="list-group-item">受理组/人</li>
+                        <li class="list-group-item">状态：</li>
+                        <li class="list-group-item">指定处理时间：</li>
+                    </ul>
                 </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">用户信息</div>
-                    <div class="panel-body">
-                        Panel content
-                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">姓名：</li>
+                        <li class="list-group-item">手机号：</li>
+                    </ul>
                 </div>
             </div>
         </div>
-
     </div>
+
+
+
+
     <script src="/js/thirdParty/jquery.min.js"></script>
     <script src="/js/thirdParty/bootstrap.min.js"></script>
+    <script src="/plugins/layui/layui.js"></script>
     <script src="/js/thirdParty/bootstrap-datetimepicker.js"></script>
     <script src="/js/thirdParty/bootstrap-datetimepicker.zh-CN.js"></script>
     <script src="/js/thirdParty/jquery.form.min.js"></script>
@@ -82,34 +123,106 @@
     <script>
         ;
         (function() {
-            // $('#table').bootstrapTable({
-            //     columns: [{
-            //         field: 'id',
-            //         title: '编号'
-            //     }, {
-            //         field: 'name',
-            //         title: '创建部门-人'
-            //     }, {
-            //         field: 'price',
-            //         title: '处理人'
-            //     }, {
-            //         field: 'Item 1',
-            //         title: '工单类型'
-            //     }, {
-            //         field: 'Item 2',
-            //         title: '紧急程度'
-            //     }, {
-            //         field: 'id',
-            //         title: '工单标题'
-            //     }, {
-            //         field: 'name',
-            //         title: '创建时间'
-            //     }, {
-            //         field: 'price',
-            //         title: '指定处理时间'
-            //     }],
-            //     data: []
-            // });
+            $('#orderservicetable').bootstrapTable({
+                columns: [{
+                    field: 'id',
+                    title: '类型'
+                }, {
+                    field: 'name',
+                    title: '时间'
+                }, {
+                    field: 'name',
+                    title: '创建部门-人'
+                }, {
+                    field: 'price',
+                    title: '回复内容'
+                }],
+                data: []
+            });
+            $('#fileinput').on('change', function() {
+                var filename = this.value;
+                var filepoint = filename.lastIndexOf('.');
+                var fileext = filename.substr(filepoint + 1);
+
+
+                if (isfiletype(fileext) === 0) {
+                    $('.fileinputhelp').text('不支持该文件类型上传');
+                    this.value = '';
+                } else {
+                    $('.fileinputhelp').text('');
+                }
+            });
+
+            function isfiletype(fileext) {
+                var fileextarr = ['docx', 'doc', 'jpg', 'png', 'pdf'];
+                var isfile = 0;
+                for (var i = 0; i < fileextarr.length; i++) {
+                    if (fileext === fileextarr[i]) {
+                        isfile++;
+                        return;
+                    }
+                }
+                return isfile;
+            }
+
+            $('.deletefilebtn').on('click', function(e) {
+                e.preventDefault();
+                $('#fileinput').val('');
+            });
+
+            $('.handletime').datetimepicker({
+                language: 'zh-CN',
+                format: "yyyy-mm-dd HH:ii",
+                showMeridian: true,
+                autoclose: true,
+                todayBtn: true
+            });
+
+            //表单验证异步提交
+            function bindsumbit() {
+                var $submit_application = $('#addworkorder');
+                var options = {
+                    beforeSerialize: function() {},
+                    beforeSubmit: function() {
+                        $('.workorderbtn').button('loading');
+                    },
+                    success: function(data) {
+                        //layer.msg(data.Message);
+                    },
+                    error: function() {
+                        //layer.msg("提交失败，请检查网络是否正常，或者刷新试试！");
+                        $('.workorderbtn').button('reset');
+                    }
+                };
+                $submit_application.ajaxForm(options);
+            }
+
+            layui.use('layer', function() {
+                var layer = layui.layer;
+                $("#summitreview").on("click", function() {
+                    layer.open({
+                        type: 1,
+                        area: ['500px', '300px'],
+                        content: '<div style="margin:0 10px;"><textarea name="" id="" rows="12"' +
+                            'placeholder="请输入备注" style="width:100%;padding-left:5px;"></textarea></div>',
+                        btn: ['确定', '取消'],
+                        yes: function(index, layero) {
+
+                        },
+                        btn2: function(index, layero) {
+
+                        }
+                    });
+                });
+
+            });
+
+
+            $().ready(function() {
+                bindsumbit();
+
+
+            });
         })();
     </script>
 </body>
