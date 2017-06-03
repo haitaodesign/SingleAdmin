@@ -19,7 +19,8 @@ layui.config({
     });
 
     function ajaxhtml(url) {
-        if (url == "" || undefined) return;
+        $layui_body_container.html("");
+        if (url === "" || undefined) return;
         //显示加载loading动画
         layer.load(2);
         //请求成功，关闭loading动画

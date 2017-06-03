@@ -37,3 +37,13 @@ a {
     margin-left: 20px;
     cursor: pointer;
 }
+
+i {
+    font-size: 20px !important;
+    margin-right: 10px;
+}
+
+.layui-footer p {
+    line-height: 44px;
+    text-align: center;
+}

@@ -8,7 +8,9 @@
     <title>工单系统</title>
     <link rel="stylesheet" href="plugins/layui/css/layui.css">
     <link rel="stylesheet" href="/css/thirdParty/bootstrap.css">
+    <link rel="stylesheet" href="/css/thirdParty/font-awesome.min.css">
     <link rel="stylesheet" href="/css/modules/index.css">
+    <link rel="stylesheet" href="//at.alicdn.com/t/font_sx3knr5ilnwgsyvi.css">
 </head>
 
 <body>
@@ -19,14 +21,9 @@
                 <a href="#">工单系统</a>
             </div>
             <ul class="layui-nav layui-user" lay-filter="">
-                <li class="layui-nav-item">
-                    <span class="righttop">用户名</span>
-                    <dl class="layui-nav-child">
-                        <!-- 二级菜单 -->
-                        <dd><span>修改密码</span></dd>
-                        <dd><span>退出登录</span></dd>
-                    </dl>
-                </li>
+                <li class="layui-nav-item"><a href="javascript:;"><i class="fa fa-user" aria-hidden="true"></i>admin</a></li>
+                <li class="layui-nav-item"><a href=""><i class="fa fa-pencil-square-o" aria-hidden="true"></i>修改密码</a></li>
+                <li class="layui-nav-item"><a href=""><i class="fa fa-sign-out" aria-hidden="true"></i>退出登录</a></li>
             </ul>
         </div>
         <div class="layui-side layui-bg-black">
@@ -34,13 +31,13 @@
                 <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
                 <ul class="layui-nav layui-nav-tree" lay-filter="nav">
                     <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
-                    <li class="layui-nav-item"><span class="navlink" data-url="/demo/test.html">首页</span></li>
-                    <li class="layui-nav-item"><span class="navlink" data-url="/demo/work_order.html">创建工单</span></li>
-                    <li class="layui-nav-item"><span class="navlink" data-url="/demo/my_worker_order.html">我的工单</span></li>
-                    <li class="layui-nav-item"><span class="navlink" data-url="/demo/my_worker_order_details.html">待分配工单</span></li>
-                    <li class="layui-nav-item"><span class="navlink" data-url="">受理中的工单</span></li>
-                    <li class="layui-nav-item"><span class="navlink" data-url="">工单记录</span></li>
-                    <li class="layui-nav-item"><span class="navlink" data-url="">工单统计</span></li>
+                    <li class="layui-nav-item"><span class="navlink" data-url="/demo/test.html"><i class="fa fa-home" aria-hidden="true"></i>首页</span></li>
+                    <li class="layui-nav-item"><span class="navlink" data-url="/demo/work_order.html"><i class="iconfont icon-addorder"></i>创建工单</span></li>
+                    <li class="layui-nav-item"><span class="navlink" data-url="/demo/my_worker_order.html"><i class="iconfont icon-myorder"></i>我的工单</span></li>
+                    <li class="layui-nav-item"><span class="navlink" data-url="/demo/my_worker_order_details.html"><i class="iconfont icon-assignorder"></i>待分配工单</span></li>
+                    <li class="layui-nav-item"><span class="navlink" data-url=""><i class="iconfont icon-handlingorder"></i>受理中的工单</span></li>
+                    <li class="layui-nav-item"><span class="navlink" data-url=""><i class="iconfont icon-noteorder"></i>工单记录</span></li>
+                    <li class="layui-nav-item"><span class="navlink" data-url=""><i class="iconfont icon-countorder"></i>工单统计</span></li>
                 </ul>
             </div>
         </div>
@@ -55,6 +52,7 @@
         </div>
         <div class="layui-footer">
             <!-- 底部固定区域 -->
+            <p>2017 &copy; <a href="javascript:;">数据研发中心</a></p>
         </div>
     </div>
     <script src="/js/thirdParty/jquery.min.js"></script>
