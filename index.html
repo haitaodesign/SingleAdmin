@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="plugins/layui/css/layui.css">
     <link rel="stylesheet" href="/css/thirdParty/bootstrap.css">
     <link rel="stylesheet" href="/css/modules/index.css">
-
 </head>
 
 <body>
@@ -21,11 +20,11 @@
             </div>
             <ul class="layui-nav layui-user" lay-filter="">
                 <li class="layui-nav-item">
-                    <a href="javascript:;">用户名</a>
+                    <span class="righttop">用户名</span>
                     <dl class="layui-nav-child">
                         <!-- 二级菜单 -->
-                        <dd><a href="javascript:;">修改密码</a></dd>
-                        <dd><a href="javascript:;">退出登录</a></dd>
+                        <dd><span>修改密码</span></dd>
+                        <dd><span>退出登录</span></dd>
                     </dl>
                 </li>
             </ul>
@@ -33,15 +32,15 @@
         <div class="layui-side layui-bg-black">
             <div class="layui-side-scroll">
                 <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-                <ul class="layui-nav layui-nav-tree" lay-filter="test">
+                <ul class="layui-nav layui-nav-tree" lay-filter="nav">
                     <!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
-                    <li class="layui-nav-item"><a href="javascript:;" data-url="/demo/test.html">首页</a></li>
-                    <li class="layui-nav-item"><a href="javascript:;" data-url="/demo/work_order.html">创建工单</a></li>
-                    <li class="layui-nav-item"><a href="javascript:;" data-url="/demo/my_worker_order.html">我的工单</a></li>
-                    <li class="layui-nav-item"><a href="javascript:;" data-url="/demo/my_worker_order_details.html">待分配工单</a></li>
-                    <li class="layui-nav-item"><a href="javascript:;" data-url="/demo/test.html">受理中的工单</a></li>
-                    <li class="layui-nav-item"><a href="javascript:;" data-url="/demo/test2.html">工单记录</a></li>
-                    <li class="layui-nav-item"><a href="javascript:;" data-url="/demo/test2.html">工单统计</a></li>
+                    <li class="layui-nav-item"><span class="navlink" data-url="/demo/test.html">首页</span></li>
+                    <li class="layui-nav-item"><span class="navlink" data-url="/demo/work_order.html">创建工单</span></li>
+                    <li class="layui-nav-item"><span class="navlink" data-url="/demo/my_worker_order.html">我的工单</span></li>
+                    <li class="layui-nav-item"><span class="navlink" data-url="/demo/my_worker_order_details.html">待分配工单</span></li>
+                    <li class="layui-nav-item"><span class="navlink" data-url="">受理中的工单</span></li>
+                    <li class="layui-nav-item"><span class="navlink" data-url="">工单记录</span></li>
+                    <li class="layui-nav-item"><span class="navlink" data-url="">工单统计</span></li>
                 </ul>
             </div>
         </div>

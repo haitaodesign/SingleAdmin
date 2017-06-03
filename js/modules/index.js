@@ -5,10 +5,11 @@ layui.config({
         $layui_elem_quote = $('.layui-elem-quote'),
         $layui_body_container = $('.layui-body-container');
     //监听导航事件,获取导航数据
-    element.on('nav', function(element) {
+    element.on('nav(nav)', function(element) {
         var $element = $(element),
             navtitle = $element.text(),
             url = $element.children().data().url;
+        console.log(url);
         if (navtitle !== "") {
             $layui_elem_quote.text(navtitle);
             ajaxhtml(url);
@@ -31,4 +32,5 @@ layui.config({
             }
         });
     }
+
 });

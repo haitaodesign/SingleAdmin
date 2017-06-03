@@ -6,7 +6,10 @@
 
 .layui-header {
     background-color: #393d49 !important;
-    border-bottom: 2px solid #009688;
+}
+
+.layui-side {
+    border-top: 2px solid #009688;
 }
 
 .layui-user {
@@ -24,4 +27,13 @@
 .logo a {
     color: #c2c2c2;
     font-size: 24px;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.navlink {
+    margin-left: 20px;
+    cursor: pointer;
 }
