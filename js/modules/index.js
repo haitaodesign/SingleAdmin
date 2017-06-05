@@ -18,6 +18,15 @@ layui.config({
         }
     });
 
+    function initfirst() {
+        var $layui_nav_one = $('.layui-nav-tree').children()[0],
+            one_url = $($layui_nav_one).children().data().url;
+        if (one_url !== "" || undefined) {
+            ajaxhtml(one_url);
+        }
+    }
+    initfirst();
+
     function ajaxhtml(url) {
         $layui_body_container.html("");
         if (url === "" || undefined) return;

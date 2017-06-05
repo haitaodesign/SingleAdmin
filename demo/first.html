@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>首页</title>
+    <link rel="stylesheet" href="/css/thirdParty/bootstrap.css">
+    <link rel="stylesheet" href="/css/thirdParty/bootstrap-table.min.css">
+    <link rel="stylesheet" href="/css/thirdParty/bootstrap-datetimepicker.css">
+    <style>
+        select,
+        input[type=text] {
+            width: 196px !important;
+        }
+        
+        input[type=radio] {
+            width: 70px;
+        }
+        
+        .form-group {
+            margin-top: 10px;
+        }
+        
+        button {
+            margin-right: 535px;
+            width: 100px;
+        }
+        
+        .workeroder-pushinfo {
+            width: 960px;
+            margin: 0 4px;
+        }
+        
+        .radio {
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <h1>工作推送</h1>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="col-sm-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">我申请的工单（未完成）</div>
+                    <div class="panel-body">
+                        <span>3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="panel panel-default">
+                    <div class="panel-heading">处理中的工单</div>
+                    <div class="panel-body">
+                        <span>2</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h1>消息推送</h1>
+            <hr>
+        </div>
+        <div class="row">
+            <div class="form-inline" style="margin-right:30px;">
+                <label for="1" style="margin-right:30px;">工单类型：</label>
+                <select class="form-control">
+                                <option>一般</option>
+                                <option>紧急</option>
+                                <option>十分紧急</option>
+                </select>
+                <div class="radio">
+                    <label for="" class="control-label" style="font-weight:bold;">工单发起人：</label>
+                    <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions" checked="checked" id="inlineRadio1" value="option1">本人
+                    </label>
+                    <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">非本人
+                    </label>
+                </div>
+            </div>
+            <div class="form-inline" style="margin-top:10px;margin-bottom:10px;">
+                <div class="form-group">
+                    <label for="" style="margin-right:10px;">消息推送时间:</label>
+                    <input type="text" class="form-control" id="ExpectTimeFrom">
+                    <label for="">至</label>
+                    <input type="text" class="form-control" id="ExpectTimeTo">
+                </div>
+            </div>
+            <div class="row workeroder-pushinfo">
+                <table id="workeroder-pushinfo"></table>
+            </div>
+        </div>
+        <div class="row">
+            <h1>组内监控</h1>
+        </div>
+        <div class="row" style="width:500px;">
+            <table id="groupmonitored"></table>
+        </div>
+    </div>
+
+
+
+    <script src="/js/thirdParty/jquery.min.js"></script>
+    <script src="/js/thirdParty/bootstrap.min.js"></script>
+    <script src="/js/thirdParty/bootstrap-table.min.js"></script>
+    <script src="/js/thirdParty/bootstrap-table-zh-CN.min.js"></script>
+    <script src="/js/thirdParty/bootstrap-datetimepicker.js"></script>
+    <script src="/js/thirdParty/bootstrap-datetimepicker.zh-CN.js"></script>
+    <script>
+        ;
+        (function() {
+            $('#workeroder-pushinfo').bootstrapTable({
+                columns: [{
+                    field: 'name',
+                    title: '时间'
+                }, {
+                    field: 'name',
+                    title: '工单编号'
+                }, {
+                    field: 'name',
+                    title: '标题'
+                }, {
+                    field: 'id',
+                    title: '类型'
+                }, {
+                    field: 'name',
+                    title: '发起部门-人'
+                }, {
+                    field: 'name',
+                    title: '处理部门-人'
+                }, {
+                    field: 'price',
+                    title: '推送内容',
+                }],
+                data: []
+            });
+            $('#groupmonitored').bootstrapTable({
+                columns: [{
+                    field: 'name',
+                    title: '组员'
+                }, {
+                    field: 'name',
+                    title: '处理中'
+                }, {
+                    field: 'name',
+                    title: '逾期工单'
+                }],
+                data: []
+            });
+
+            function initdatepicker(start, end) {
+                //初始化日期选择器
+                start.datetimepicker({
+                    format: "yyyy-mm-dd hh:ii",
+                    minView: 'hour',
+                    autoclose: true,
+                    startDate: '2017-01-01',
+                    language: 'zh-CN',
+                    clearBtn: true
+                }).on("click", function() {
+                    start.datetimepicker("setEndDate", end.val());
+                });
+                end.datetimepicker({
+                    format: "yyyy-mm-dd hh:ii",
+                    minView: 'hour',
+                    startDate: '2017-01-01',
+                    autoclose: true,
+                    language: 'zh-CN',
+                    clearBtn: true
+                }).on("click", function() {
+                    end.datetimepicker("setStartDate", start.val());
+                });
+            }
+
+            $().ready(function() {
+                initdatepicker($('#ExpectTimeFrom'), $('#ExpectTimeTo'));
+
+            });
+        })();
+    </script>
+</body>
+
+</html>
