@@ -3,7 +3,9 @@ layui.use(['element','form','layer'],function(){
         $ = layui.$,
         form=layui.form;
 
-
+        /**
+         * 登录表单验证
+         */
         form.verify({
             username: function(value, item){ //value：表单的值、item：表单的DOM对象
               if(!new RegExp("^[a-zA-Z0-9_\u4e00-\u9fa5\\s·]+$").test(value)){
@@ -21,5 +23,17 @@ layui.use(['element','form','layer'],function(){
               /^[\S]{6,12}$/
               ,'密码必须6到12位，且不能出现空格'
             ] 
-          });      
+          });
+        
+        // 监听表单提交事件
+        form.on('submit(login)',function(data){
+          var params = data.field;
+          
+          //验证密码，ajax请求服务器数据进行验证，此处为模拟登录
+          if(params.username=='admin' && params.password=='123456'){
+                // 验证cookie正确后跳转
+                window.location.href="/index.html"
+          }
+          return false;
+        });
 });

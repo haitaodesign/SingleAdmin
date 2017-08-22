@@ -38,7 +38,7 @@
               <li class="layui-nav-item">
                 <a class="" href="javascript:;" >组件</a>
                 <dl class="layui-nav-child">
-                  <dd><a href="javascript:;" data-url="/demo/form.html">表单</a></dd>
+                  <dd><a href="javascript:;" data-url="/demo/table.html">表单</a></dd>
                 </dl>
               </li>
             </ul>
@@ -58,8 +58,15 @@
             </div>
         </div>
       </div>
+    <script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.js"></script>
     <script src="/plugins/layui/layui.js"></script>
-    <script src="/js/modules/index.js"></script>
+    <script>
+      (function(){
+        $.getScript('/js/modules/index.js',function(data,textStatus,jqxhr){
+          console.log('index.js 加载成功');
+        })
+      })();
+    </script>
 </body>
 
 </html>
