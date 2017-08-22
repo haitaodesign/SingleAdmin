@@ -6,7 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>表格示例</title>
 </head>
-<body>
+<body style="background-color:#fff;">
     <h1>表格示例</h1>
+    <div style="width:1080px;">
+        <table class="layui-hide" id="test-table-uer" lay-filter="user"></table>
+    </div>
+    <script>    
+        layui.use('table', function(){
+            var table = layui.table;
+            var testdata = []
+            $.getJSON('/mockdata/testdata.json',function(data){
+                testdata=data.data;
+            });
+            setTimeout(function() {
+                var tableuser= table.render({
+                elem:'#test-table-uer',
+                data:testdata,
+                cols: [[
+                    {field:'id', title: 'ID', width:80, sort: true, fixed: true}
+                    ,{field:'username', title: '用户名', width:80}
+                    ,{field:'sex', title: '性别', width:80, sort: true}
+                    ,{field:'city', title: '城市', width:80}
+                    ,{field:'sign', title: '签名', width:177}
+                    ,{field:'experience', title: '积分', sort: true, width:80}
+                    ,{field:'score', title: '评分', sort: true, width:80}
+                    ,{field:'classify', title: '职业', width:80}
+                    ,{field:'wealth', title: '财富', sort: true, width:135}
+                ]]
+                ,page: true
+                ,height:750
+            })
+            }, 0);
+            
+            
+        });
+    </script>
 </body>
 </html>
