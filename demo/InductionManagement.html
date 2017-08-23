@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>入职管理</title>
+    <style>
+        .layui-btn-add{
+            float: left;
+        }
+        .layui-form-search{
+            float: right;
+            margin-right: 20px;
+        }
+        .layui-table-inductionlist{
+            clear: both;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="layui-btn-add">
+        <button class="layui-btn inducbtnadd" data-type="reload">添加</button>
+    </div>
+    <div class="layui-form-search">
+            <form class="layui-form">
+                    <div class="layui-form-item">
+                            <label class="layui-form-label">入职状态:</label>
+                            <div class="layui-input-inline">
+                              <select name="quiz1">
+                                <option value="">全部</option>
+                              </select>
+                            </div>
+                            <label class="layui-form-label">部门:</label>
+                            <div class="layui-input-inline">
+                              <select name="quiz2">
+                                <option value="">全部</option>
+                              </select>
+                            </div>
+                            <label class="layui-form-label">所属分组</label>
+                            <div class="layui-input-inline">
+                              <select name="quiz3">
+                                    <option value="">全部</option>
+                              </select>
+                            </div>
+                            <div class="layui-inline">
+                                    <label class="layui-form-label">日期范围</label>
+                                    <div class="layui-input-inline">
+                                      <input type="text" class="layui-input" id="inducdate" placeholder="请选择日期范围">
+                                    </div>
+                            </div>
+                        <button class="layui-btn" lay-submit lay-filter="entrysearch">查询</button>
+                    </div>
+            </form>
+    </div>
+    
+    <div class="layui-table-inductionlist">
+        <table class="layui-hide" id="induction-manage" lay-filter="user"></table>
+    </div>
+    <script type="text/html" id="addinduction">
+        <form class="layui-form" action="" style="margin-top:20px;">
+            <div class="layui-form-item">
+                    <label class="layui-form-label">姓名<i class="required-color">*</i>：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入姓名" class="layui-input">
+                    </div>
+            </div>
+            <div class="layui-form-item">
+                    <label class="layui-form-label">部门<i class="required-color">*</i>：</label>
+                    <div class="layui-input-inline">
+                        <select name="" id="">
+                            <option value="">数据中心</option>
+                        </select>
+                    </div>
+            </div>
+            <div class="layui-form-item">
+                    <label class="layui-form-label">分组<i class="required-color">*</i>：</label>
+                    <div class="layui-input-inline">
+                        <select name="" id="">
+                            <option value="">数据研发组</option>
+                        </select>
+                    </div>
+            </div>
+            <div class="layui-form-item">
+                    <label class="layui-form-label">职位<i class="required-color">*</i>：</label>
+                    <div class="layui-input-inline">
+                        <select name="" id="">
+                            <option value="">前端开发</option>
+                        </select>
+                    </div>
+            </div>
+            <div class="layui-form-item">
+                    <label class="layui-form-label">入职日期：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" id="entrydate" placeholder="请输入日期">
+                    </div>
+            </div>
+            <div class="layui-form-item">
+                    <label class="layui-form-label">手机号：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入手机号" class="layui-input">
+                    </div>
+            </div>
+            <div class="layui-form-item">
+                    <label class="layui-form-label">邮箱：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入邮箱" class="layui-input">
+                    </div>
+            </div>
+            <div class="layui-form-item">
+                    <label class="layui-form-label">微信/QQ：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" lay-verify="title" autocomplete="off" placeholder="请输入微信号或者QQ号" class="layui-input">
+                    </div>
+            </div>
+            <div class="layui-form-item">
+                <button class="layui-btn" lay-submit lay-filter="addentryplan" style="margin-left:150px;">确认</button>
+            </div>
+        </form>
+    </script>
+    <script type="text/html" id="entryopertion">
+        <a class="layui-btn layui-btn-mini" lay-event="enter-entry">确认</a>
+        <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="delete">删除</a>
+    </script>
+      <script>
+          layui.use(['table','form','laydate','layer'],function(){
+              var table = layui.table,
+              form=layui.form,
+              laydate = layui.laydate,
+              layer = layui.layer;
+              var entrytableins = table.render({
+                elem: '#induction-manage',
+                url:'/mockdata/testdata.json',
+                  cols: [[
+                  {field:'username', title: '姓名', width:90}
+                  ,{field:'sex', title: '性别', width:60}
+                  ,{field:'city', title: '部门', width:150}
+                  ,{field:'sign', title: '所属分组', width:150}
+                  ,{field:'experience', title: '职位', width:150}
+                  ,{field:'score', title: '入职日期',  width:120}
+                  ,{field:'classify', title: '手机号', width:150}
+                  ,{field:'wealth', title: '邮箱',  width:150}
+                  ,{field:'wealth', title: '微信/QQ',width:135}
+                  ,{field:'wealth', title: '入职状态',width:100}
+                  ,{field:'wealth', title: '操作',width:200,fixed:'right',align:'center',toolbar:'#entryopertion'}
+                ]]
+                ,page: true
+                ,height: 750,
+                id:'indmanage'
+              });
+            //日期范围
+            laydate.render({
+                elem: '#inducdate'
+                ,range: true
+            });
+            
+            //添加弹窗初始化
+            $('.inducbtnadd').on('click',function(){
+                var addindform=$('#addinduction').html();
+                layer.open({
+                    type:1,
+                    title:'添加入职员工信息',
+                    content:addindform,
+                    area:['400px','550px']
+
+                })
+                laydate.render({
+                    elem: '#entrydate'
+                    ,range: false
+                });
+                form.render();
+            })
+            // 监听添加事件表单
+            form.on('submit(addentryplan)',function(data){
+                console.log(data);
+                return false;
+            })
+
+            // 监听列表操作工具栏事件
+            table.on('tool(indmanage)',function(obj){
+                var data = obj.data;
+                if(obj.event ==='enter-entry'){
+                    // 点击确认之后进行相应的操作
+                }else if(obj.event === 'delete'){
+                    console.log('delete')
+                }
+            })
+
+            // 监听搜索按钮提交
+            form.on('submit(entrysearch)',function(data){
+                console.log(data);
+                return false;
+            })
+
+            form.render();
+
+        })
+      </script>
+
+</body>
+</html>

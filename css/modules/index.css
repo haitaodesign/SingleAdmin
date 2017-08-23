@@ -14,3 +14,6 @@
     height: 95%;
     overflow-y: auto; 
 }
+.required-color{
+    color: red;
+}

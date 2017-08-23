@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>转正管理</title>
+    <style>
+    .layui-table-fulltimelist{
+        margin-right: 10px;
+    }
+    </style>
+</head>
+<body>
+        <div class="layui-form-search">
+                <form class="layui-form">
+                        <div class="layui-form-item">
+                                <label class="layui-form-label">部门:</label>
+                                <div class="layui-input-inline">
+                                  <select name="quiz2">
+                                    <option value="">全部</option>
+                                  </select>
+                                </div>
+                                <div class="layui-inline">
+                                        <label class="layui-form-label">日期范围</label>
+                                        <div class="layui-input-inline">
+                                          <input type="text" class="layui-input" id="inducdate" placeholder="请选择日期范围">
+                                        </div>
+                                </div>
+                                <div class="layui-inline">
+                                        <input type="text"  class="layui-input" name="title" lay-verify="title" autocomplete="off" placeholder="请输入工号或姓名查询">
+                                </div>
+                            <button class="layui-btn" lay-submit lay-filter="fulltimesearch">查询</button>
+                        </div>
+                </form>
+        </div>
+        <div class="layui-table-fulltimelist">
+                <table class="layui-hide" id="fulltime-manage" lay-filter="fulltime"></table>
+        </div>
+        <script>
+            layui.use(['form','table'],function(){
+                var form = layui.form,
+                table = layui.table;
+
+                var fulltimetableins = table.render({
+                    elem:'#fulltime-manage',
+                    url:'/mockdata/fulltimedata.json',
+                    cols:[[
+                        {field:'id',title:'工号',width:100},
+                        {field:'name',title:'姓名',width:100},
+                        {field:'dept',title:'部门',width:150},
+                        {field:'position',title:'职位',width:120},
+                        {field:'fulltimedate',title:'转正日期',width:120},
+                        {field:'weixinorqq',title:'微信/QQ',width:120},
+                        {field:'trydate',title:'试用期',width:100},
+                        {field:'reportstate',title:'报告状态',width:150}
+                    ]],
+                    page:true,
+                    height:750
+                }) 
+
+                form.on('submit(fulltimesearch)',function(data){
+                    console.log(data);
+                    return false;
+                })
+
+                form.render();
+            })
+        </script>
+</body>
+</html>
