@@ -54,9 +54,8 @@
                     </div>
             </form>
     </div>
-    
     <div class="layui-table-inductionlist">
-        <table class="layui-hide" id="induction-manage" lay-filter="user"></table>
+        <table class="layui-hide" id="induction-manage" lay-filter="indmanage"></table>
     </div>
     <script type="text/html" id="addinduction">
         <form class="layui-form" action="" style="margin-top:20px;">
@@ -179,6 +178,7 @@
 
             // 监听列表操作工具栏事件
             table.on('tool(indmanage)',function(obj){
+                console.log(obj);
                 var data = obj.data;
                 if(obj.event ==='enter-entry'){
                     // 点击确认之后进行相应的操作

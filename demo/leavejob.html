@@ -5,8 +5,173 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>离职管理</title>
+    <style>
+        .layui-btn-add{
+            float: left;
+            margin-top: 10px;
+        }
+        .layui-form-search{
+            float: right;
+            margin-right: 20px;
+        }
+        .layui-table-leavejoblist{
+            clear: both;
+            margin-right: 10px;
+        }
+    </style>
 </head>
 <body>
-    
+    <div class="layui-btn-add">
+            <button class="layui-btn leavejobadd" data-type="reload">添加</button>
+    </div>
+    <div class="layui-form-search">
+        <form class="layui-form">
+                <div class="layui-form-item">
+                        <div class="layui-inline">
+                                <input type="text"  class="layui-input" name="title" lay-verify="title" autocomplete="off" placeholder="请输入工号或姓名查询">
+                        </div>
+                    <button class="layui-btn" lay-submit lay-filter="leavejobsearch">查询</button>
+                </div>
+        </form>
+    </div>
+    <div class="layui-table-leavejoblist">
+        <table class="layui-hide" id="leavejob-manage" lay-filter="leavejob"></table>
+    </div>
+    <script type="text/html" id="addleavejob">
+        <form class="layui-form" style="margin-top:20px;margin-left:50px;">
+                <div class="layui-form-item">
+                        <div class="layui-input-inline">
+                            <input type="text" name="title" lay-verify="title" placeholder="请输入工号或姓名" autocomplete="off" class="layui-input">
+                        </div>
+                        <button class="layui-btn" lay-submit lay-filter="newleavejobsearch">查询</button>
+                </div>
+        </form>
+        <hr />
+        <form class="layui-form" style="margin-top:20px;">
+            <div class="layui-form-item">
+                    <label class="layui-form-label">工号：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="leavetitle" id="leavetitle" disabled="" lay-verify="title" autocomplete="off" class="layui-input">
+                    </div>
+            </div>
+            <div class="layui-form-item">
+                    <label class="layui-form-label">姓名：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="name" disabled="" lay-verify="title" autocomplete="off" class="layui-input">
+                    </div>
+            </div>
+            <div class="layui-form-item">
+                    <label class="layui-form-label">部门：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" disabled="" lay-verify="title" autocomplete="off" class="layui-input">
+                    </div>
+            </div>
+            <div class="layui-form-item">
+                    <label class="layui-form-label">职位：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" disabled="" lay-verify="title" autocomplete="off" class="layui-input">
+                    </div>
+            </div>
+         
+            <div class="layui-form-item">
+                    <label class="layui-form-label">入职状态：</label>
+                    <div class="layui-input-inline">
+                        <input type="text" name="title" disabled="" lay-verify="title" autocomplete="off" class="layui-input">
+                    </div>
+            </div>
+            <hr/>
+            <div class="layui-form-item">
+                    <label class="layui-form-label">离职申请日期：</label>
+                    <div class="layui-input-inline">
+                            <input type="text" name="leavedate" class="layui-input" id="leavedate" placeholder="请输入日期">
+                    </div>
+            </div>
+            <div class="layui-form-item">
+                <button class="layui-btn" lay-submit lay-filter="addleavejob" style="margin-left:150px;">确认</button>
+            </div>
+        </form>
+    </script>
+    <script type="text/html" id="leaveopertion">
+        <a class="layui-btn layui-btn-mini" lay-event="enter-leave">确认</a>
+        <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="enter-cancel">取消</a>
+    </script>
+    <script>
+        layui.use(['form','table','layer','laydate'],function(){
+          var form = layui.form;
+          table = layui.table,
+          layer = layui.layer,
+          laydate = layui.laydate,
+          $ = layui.$;
+          var leavejobtableins = table.render({
+                    elem:'#leavejob-manage',
+                    url:'/mockdata/fulltimedata.json',
+                    cols:[[
+                        {field:'id',title:'工号',width:100},
+                        {field:'name',title:'姓名',width:100},
+                        {field:'dept',title:'部门',width:150},
+                        {field:'position',title:'职位',width:120},
+                        {field:'fulltimedate',title:'离职申请日期',width:120},
+                        {field:'classify', title: '手机号', width:150},
+                        {field:'wealth', title: '邮箱',  width:150},
+                        {field:'weixinorqq',title:'微信/QQ',width:120},
+                        {field:'',title:'操作',width:150,align:'center',toolbar:'#leaveopertion'}
+                    ]],
+                    page:true,
+                    height:750,
+                    id:'leavemanage'
+                }); 
+
+                // 离职列表查询
+                form.on('submit(leavejobsearch)',function(data){
+                    console.log(data);
+                    return false;
+                });
+
+                // 点击添加弹出离职人员申请弹窗
+                $('.leavejobadd').on('click',function(){
+                    var addindform=$('#addleavejob').html();
+                    layer.open({
+                        type:1,
+                        title:'添加离职申请',
+                        content:addindform,
+                        area:['400px','550px']
+
+                    })
+                    laydate.render({
+                        elem: '#leavedate'
+                        ,range: false
+                    });
+                    form.render();
+                });
+
+                // 查询需要离职人员工号
+                form.on('submit(newleavejobsearch)',function(data){
+                    console.log(data);
+
+                    // 查询成功之后将返回的离职人员数据写入下面输入框
+
+                    return false;
+                });
+
+                // 确认添加离职人员
+                form.on('submit(addleavejob)',function(data){
+                    console.log(data);
+                    return false;
+                });
+
+                // 监听列表操作工具栏事件
+                table.on('tool(leavejob)',function(obj){
+                    var data = obj.data;
+                    if(obj.event ==='enter-leave'){
+                        // 点击确认之后进行相应的操作
+                        console.log('leave');
+                    }else if(obj.event === 'enter-cancel'){
+                        console.log('cancel')
+                    }
+                })
+
+                form.render();  
+        })
+    </script>
 </body>
 </html>
