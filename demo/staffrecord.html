@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>员工档案</title>
+    <style>
+    .layui-table-staffrecordlist{
+        margin-right: 10px;
+    }
+    .baseInfo{
+        margin: 10px;
+    }
+    .baseInfo-one{
+        display: inline-table;
+        width: 1080px;
+
+    }
+    .baseInfo-one-img{
+        float: left;
+        width: 120px;
+        height: 138px;
+        background-color:black;
+
+    }
+    .baseInfo-one-table{
+        float: left;
+        width: 900px;
+        margin-left: 20px;
+    }
+    </style>
+</head>
+<body>
+        <div class="layui-form-search">
+                <form class="layui-form">
+                        <div class="layui-form-item">
+                                <label class="layui-form-label">部门:</label>
+                                <div class="layui-input-inline">
+                                  <select name="quiz2">
+                                    <option value="">全部</option>
+                                  </select>
+                                </div>
+                                <div class="layui-inline">
+                                        <label class="layui-form-label">状态：</label>
+                                        <div class="layui-input-inline">
+                                                <select name="quiz2">
+                                                        <option value="">全部</option>
+                                                </select>
+                                        </div>
+                                </div>
+                                <div class="layui-inline">
+                                        <input type="text"  class="layui-input" name="title" lay-verify="title" autocomplete="off" placeholder="请输入工号或姓名查询">
+                                </div>
+                            <button class="layui-btn" lay-submit lay-filter="staffrecordsearch">查询</button>
+                        </div>
+                </form>
+        </div>
+        <div class="layui-table-staffrecordlist">
+                <table class="layui-hide" id="staffrecord-manage" lay-filter="staffrecord"></table>
+        </div>
+        <script type="text/html" id="checkdetails">
+            <a class="layui-btn layui-btn-mini" lay-event="enter-check">查看</a>
+        </script>
+        <script type="text/html" id="baseInfo">
+            <div class="baseInfo">
+                <div class="baseInfo-one">
+                    <div class="baseInfo-one-img">
+                    </div>
+                    <div class="baseInfo-one-table">
+                        <table class="layui-table">
+                            <tr>
+                                <td>工号</td>
+                                <td></td>
+                                <td>姓名</td>
+                                <td></td>
+                                <td>性别</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>部门</td>
+                                <td></td>
+                                <td>岗位</td>
+                                <td></td>
+                                <td>所属分组</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>当前薪资</td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <hr>
+                <div class="baseInfo-two">
+                        <table class="layui-table" lay-size="sm">
+                                <colgroup>
+                                    <col>
+                                    <col width="300">
+                                    <col>
+                                    <col>
+                                    <col>
+                                    <col>
+                                    <col>
+                                    <col width="300">
+                                  </colgroup>
+                                <tr>
+                                    <td>年龄</td>
+                                    <td></td>
+                                    <td>民族</td>
+                                    <td></td>
+                                    <td>籍贯</td>
+                                    <td></td>
+                                    <td>婚否</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>户口类型</td>
+                                    <td></td>
+                                    <td>出生年月日</td>
+                                    <td></td>
+                                    <td>政治面貌</td>
+                                    <td></td>
+                                    <td>身份证号码</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>入职日期</td>
+                                    <td></td>
+                                    <td>转正日期</td>
+                                    <td></td>
+                                    <td>服务年限</td>
+                                    <td></td>
+                                    <td>员工状态</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>学历</td>
+                                    <td></td>
+                                    <td>政治面貌</td>
+                                    <td></td>
+                                    <td>毕业院校</td>
+                                    <td></td>
+                                    <td>专业</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>社保状态</td>
+                                    <td></td>
+                                    <td>邮箱</td>
+                                    <td>5545822@qq.com</td>
+                                    <td>手机号码</td>
+                                    <td>123546542565</td>
+                                    <td>家庭住址</td>
+                                    <td>反反复复发发发付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付</td>
+                                </tr>
+                                <tr>
+                                    <td>户籍地址</td>
+                                    <td>反反复复发发发付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付付</td>
+                                    <td>学历</td>
+                                    <td></td>
+                                    <td>开户银行</td>
+                                    <td></td>
+                                    <td>银行卡号</td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                    <button class="layui-btn" id="baseInfo-update">编辑</button>
+                </div>
+            </div>
+        </script>
+        <script type="text/html" id="baseInfo-save">
+            <form class="layui-form" style="margin-top:20px;">
+                    <div class="layui-form-item">
+                            <label class="layui-form-label">年龄：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name" lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                            <label class="layui-form-label">民族：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                            <label class="layui-form-label">籍贯：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                    </div>
+                    <div class="layui-form-item">
+                            <label class="layui-form-label">婚否：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                            <label class="layui-form-label">户口类型：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                            <label class="layui-form-label">出生年月日：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                    </div>
+                    <div class="layui-form-item">
+                            <label class="layui-form-label">政治面貌：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                            <label class="layui-form-label">身份证号码：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                            <label class="layui-form-label">入职日期：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                    </div>
+                    <div class="layui-form-item">
+                            <label class="layui-form-label">转正时间：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                            <label class="layui-form-label">服务年限：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                            <label class="layui-form-label">员工状态：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                    </div>
+                    <div class="layui-form-item">
+                            <label class="layui-form-label">学历：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                            <label class="layui-form-label">政治面貌：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                            <label class="layui-form-label">毕业院校：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                    </div>
+                    <div class="layui-form-item">
+                            <label class="layui-form-label">专业：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                            <label class="layui-form-label">社保状态：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                            <label class="layui-form-label">手机号码：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                    </div>
+                    <div class="layui-form-item">
+                            <label class="layui-form-label">邮箱：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                            <label class="layui-form-label">家庭住址：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                            <label class="layui-form-label">学历：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                    </div>
+                    <div class="layui-form-item">
+                            <label class="layui-form-label">卡户银行：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                            <label class="layui-form-label">银行卡号：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                            </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <button class="layui-btn" lay-submit lay-filter="addchangework" style="margin-left:150px;">保存</button>
+                    </div>
+                </form>
+        </script>
+        <script type="text/html" id="pdfviewer">
+            <div style="width:820px">
+                <a class="mediapdf" href="./mockdata/es6base.pdf"></a>
+            </div>
+        </script>
+        <script>
+            (function(){
+                $.getScript('./js/thirdParty/jquery.media.js',function(data,textStatus,jqxhr){
+                console.log('jquery.media.js 加载成功');
+                })
+            })();
+        </script>
+        
+        <script>
+            
+            layui.use(['form','table'],function(){
+                var form = layui.form,
+                table = layui.table;
+
+                var fulltimetableins = table.render({
+                    elem:'#staffrecord-manage',
+                    url:'/mockdata/fulltimedata.json',
+                    cols:[[
+                        {field:'id',title:'工号',width:100},
+                        {field:'name',title:'姓名',width:100},
+                        {field:'name',title:'性别',width:100},
+                        {field:'dept',title:'部门',width:150},
+                        {field:'dept',title:'所属分组',width:150},
+                        {field:'position',title:'职位',width:120},
+                        {field:'dept',title:'状态',width:150},
+                        {field:'',title:'操作',width:150,align:'center',toolbar:'#checkdetails'}
+                    ]],
+                    page:true,
+                    height:750,
+                    id:'staffrecord'
+                }) 
+
+                form.on('submit(staffrecordsearch)',function(data){
+                    console.log(data);
+                    return false;
+                });
+                form.render();
+
+                table.on('tool(staffrecord)',function(obj){
+                    if(obj.event==="enter-check"){
+                        layer.tab({
+                            area:['1080px,','750px'],
+                            tab:[{
+                                title:'基本信息',
+                                content:$('#baseInfo').html()
+                            },{
+                                title:'简历',
+                                content:$('#pdfviewer').html()
+                            },{
+                                title:'员工历程',
+                                content:'3'
+                            }]  
+                        });
+
+                        $('a.mediapdf').media({width:800,height:650});
+                        $('#baseInfo-update').on('click',function(){
+                            //先通过模板渲染数据
+                            layer.open({
+                                type:1,
+                                title:'修改员工档案基本信息',
+                                content:$('#baseInfo-save').html(),
+                                area:['1080px','650px']
+                            });
+                        });
+                    }
+                })
+            });
+
+            
+        </script>
+</body>
+</html>

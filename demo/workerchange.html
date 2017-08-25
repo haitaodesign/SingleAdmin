@@ -61,7 +61,7 @@
                         <div class="layui-input-inline">
                             <input type="text" name="title" lay-verify="title" placeholder="请输入工号或姓名" autocomplete="off" class="layui-input">
                         </div>
-                        <button class="layui-btn" lay-submit lay-filter="newleavejobsearch">查询</button>
+                        <button class="layui-btn" lay-submit lay-filter="changeworksearch">查询</button>
                 </div>
         </form>
         <fieldset class="layui-elem-field layui-field-title">
@@ -69,7 +69,7 @@
                 <div class="layui-field-box" style="padding:0 20px;">
                         <table class="layui-table">
                             <tr>
-                                <td>员工编号</td>
+                                <td>员工工号</td>
                                 <td></td>
                                 <td>姓名</td>
                                 <td></td>
@@ -102,9 +102,61 @@
                 </div>
         </fieldset>
         <fieldset class="layui-elem-field layui-field-title">
-                <legend>员工调动</legend>
+                <legend>员工调动信息填写</legend>
                 <div class="layui-field-box" style="padding:20px;">
-                       
+                    <form class="layui-form" style="margin-top:20px;">
+                        <div class="layui-form-item">
+                                <label class="layui-form-label">现部门：</label>
+                                <div class="layui-input-inline">
+                                    <select name="quiz2">
+                                            <option value="">全部</option>
+                                    </select>
+                                </div>
+                                <label class="layui-form-label">现职位名称：</label>
+                                <div class="layui-input-inline">
+                                    <select name="quiz2">
+                                            <option value="">全部</option>
+                                    </select>
+                                </div>
+                                <label class="layui-form-label">现所属分组：</label>
+                                <div class="layui-input-inline">
+                                    <select name="quiz2">
+                                            <option value="">全部</option>
+                                    </select>
+                                </div>
+                        </div>
+                        <div class="layui-form-item">
+                                <label class="layui-form-label">现工资情况：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                                </div>
+                                <label class="layui-form-label">现社保福利及补贴：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                                </div>
+                                <label class="layui-form-label">现合同起止：</label>
+                                <div class="layui-input-inline">
+                                    <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                                </div>
+                        </div>
+                        <div class="layui-form-item">
+                                <label class="layui-form-label">现职位情况：</label>
+                                <div class="layui-input-block">
+                                        <input type="radio" name="sex" value="岗位人员调离" title="岗位人员调离" checked="">
+                                        <input type="radio" name="sex" value="同岗位编制内增加" title="同岗位编制内增加">
+                                        <input type="radio" name="sex" value="现职位空缺" title="现职位空缺">
+                                </div>
+                        </div>
+                        <div class="layui-form-item">
+                                <label class="layui-form-label">异动说明：</label>
+                                <div class="layui-input-block">
+                                    <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <button class="layui-btn" lay-submit lay-filter="addchangework" style="margin-left:150px;">确认</button>
+                        </div>
+                    </form>
                 </div>
         </fieldset>
     </script>
@@ -115,10 +167,27 @@
             table = layui.table,
             layer = layui.layer;
 
+            // 监听查询事件
             form.on('submit(workchangesearch)',function(obj){
                 console.log(obj);
                 return false;
             });
+            // 监听员工工号或姓名查询
+            form.on('submit(changeworksearch)',function(obj){
+                console.log('aaa');
+                return false;
+            });
+            // 监听类型下拉值，刷新表格数据
+            form.on('select(changetype)',function(obj){
+                console.log(obj);
+            });
+
+            // 监听确认员工变动信息列表
+            form.on('submit(addchangework)',function(){
+                console.log('aa');
+                return false;
+            });
+
 
             laydate.render({
                 elem:'#changedate',
@@ -147,11 +216,7 @@
                 height:750
             })
 
-            // 监听类型下拉值，刷新表格数据
-            form.on('select(changetype)',function(obj){
-                console.log(obj);
-            });
-
+         
             // 监听添加按钮事件
             $('.workerchangeadd').on('click',function(){
                 var workchangecontent = $('#addworkerchange').html();
@@ -159,9 +224,10 @@
                     type:1,
                     title:'添加员工调用信息',
                     content:workchangecontent,
-                    area:['960px','650px']
-                })
-
+                    area:['1080px','800px']
+                });
+                form.render('radio');
+                form.render('select');
             });
 
 
