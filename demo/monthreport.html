@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>月报</title>
+    <style>
+    .layui-table-monthreportlist{
+        margin-right: 10px;
+    }
+    </style>
+</head>
+<body>
+        <div class="layui-form-search">
+                <form class="layui-form">
+                        <div class="layui-form-item">
+                                <label class="layui-form-label">部门:</label>
+                                <div class="layui-input-inline">
+                                  <select name="quiz2">
+                                    <option value="">全部</option>
+                                  </select>
+                                </div>
+                                <div class="layui-inline">
+                                        <input type="text"  class="layui-input" name="title" lay-verify="title" autocomplete="off" placeholder="请输入工号或姓名查询">
+                                </div>
+                            <button class="layui-btn" lay-submit lay-filter="monthreportsearch">查询</button>
+                        </div>
+                </form>
+        </div>
+        <div class="layui-table-monthreportlist">
+                <table class="layui-hide" id="monthreport-manage" lay-filter="monthreport"></table>
+        </div>
+        <script>
+            
+            layui.use(['form','table'],function(){
+                var form = layui.form,
+                table = layui.table;
+
+                var fulltimetableins = table.render({
+                    elem:'#monthreport-manage',
+                    url:'/mockdata/fulltimedata.json',
+                    cols:[[
+                        {field:'id',title:'序号',width:100},
+                        {field:'name',title:'部门',width:100},
+                        {field:'name',title:'岗位',width:100},
+                        {field:'dept',title:'姓名',width:150},
+                        {field:'dept',title:'员工编号',width:150},
+                        {field:'position',title:'身份证号码',width:120},
+                        {field:'dept',title:'出生年月日',width:150},
+                        {field:'name',title:'性别',width:100},
+                        {field:'dept',title:'年龄',width:150},
+                        {field:'dept',title:'民族',width:150},
+                        {field:'position',title:'籍贯',width:120},
+                        {field:'dept',title:'户口类型',width:150},
+                        {field:'name',title:'婚否',width:100},
+                        {field:'name',title:'政治面貌',width:100},
+                        {field:'dept',title:'手机号码',width:150},
+                        {field:'dept',title:'入职日期',width:150},
+                        {field:'position',title:'服务年限',width:120},
+                        {field:'dept',title:'员工状态',width:150},
+                        {field:'name',title:'学历',width:100},
+                        {field:'name',title:'毕业院校',width:100},
+                        {field:'name',title:'专业',width:100},
+                        {field:'dept',title:'社保状态',width:150},
+                        {field:'dept',title:'邮箱',width:150},
+                        {field:'position',title:'家庭住址',width:120},
+                        {field:'dept',title:'户籍地址',width:150},
+                        {field:'name',title:'开户银行',width:100},
+                        {field:'position',title:'银行卡号',width:120},
+                        {field:'dept',title:'备注',width:150}
+                    ]],
+                    page:true,
+                    height:750,
+                    id:'monthreport'
+                }); 
+
+                form.on('submit(monthreportsearch)',function(data){
+                    console.log(data);
+                    return false;
+                });
+                form.render();
+            });
+
+            
+        </script>
+</body>
+</html>
