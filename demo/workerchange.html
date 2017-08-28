@@ -103,69 +103,175 @@
         </fieldset>
         <fieldset class="layui-elem-field layui-field-title">
                 <legend>员工调动信息填写</legend>
-                <div class="layui-field-box" style="padding:20px;">
-                    <form class="layui-form" style="margin-top:20px;">
-                        <div class="layui-form-item">
-                                <label class="layui-form-label">现部门：</label>
-                                <div class="layui-input-inline">
-                                    <select name="quiz2">
-                                            <option value="">全部</option>
-                                    </select>
+                <div class="changeform">
+                    <div class="layui-tab">
+                            <ul class="layui-tab-title">
+                                <li class="layui-this">调岗</li>
+                                <li>调级</li>
+                                <li>调薪</li>
+                            </ul>
+                            <div class="layui-tab-content">
+                                <div class="layui-tab-item layui-show">
+                                <div class="layui-field-box">
+                                    <form class="layui-form">
+                                        <div class="layui-form-item">
+                                                <div class="layui-input-inline" style="display:none;">
+                                                        <input type="text" name="changetype"  lay-verify="title" autocomplete="off" class="layui-input">
+                                                </div>
+                                                <label class="layui-form-label">现部门：</label>
+                                                <div class="layui-input-inline">
+                                                    <select name="quiz2">
+                                                            <option value="">全部</option>
+                                                    </select>
+                                                </div>
+                                                <label class="layui-form-label">现职位名称：</label>
+                                                <div class="layui-input-inline">
+                                                    <select name="quiz2">
+                                                            <option value="">全部</option>
+                                                    </select>
+                                                </div>
+                                                <label class="layui-form-label">现所属分组：</label>
+                                                <div class="layui-input-inline">
+                                                    <select name="quiz2">
+                                                            <option value="">全部</option>
+                                                    </select>
+                                                </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                                <label class="layui-form-label">现工资情况：</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="name"  lay-verify="required|number" autocomplete="off" class="layui-input">
+                                                </div>
+                                                <label class="layui-form-label">现社保福利及补贴：</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                                                </div>
+                                                <label class="layui-form-label">现合同起止：</label>
+                                                <div class="layui-input-inline">
+                                                    <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                                                </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                                <label class="layui-form-label">现职位情况：</label>
+                                                <div class="layui-input-block">
+                                                        <input type="radio" name="sex" value="岗位人员调离" title="岗位人员调离" checked="">
+                                                        <input type="radio" name="sex" value="同岗位编制内增加" title="同岗位编制内增加">
+                                                        <input type="radio" name="sex" value="现职位空缺" title="现职位空缺">
+                                                </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                                <label class="layui-form-label">异动说明：</label>
+                                                <div class="layui-input-block">
+                                                    <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                                </div>
+                                        </div>
+                                        <div class="layui-form-item">
+                                            <button class="layui-btn" lay-submit lay-filter="addchangework" style="margin-left:150px;">确认</button>
+                                            <button class="layui-btn layui-btn-normal closechange">关闭</button>
+                                        </div>
+                                    </form>
                                 </div>
-                                <label class="layui-form-label">现职位名称：</label>
-                                <div class="layui-input-inline">
-                                    <select name="quiz2">
-                                            <option value="">全部</option>
-                                    </select>
                                 </div>
-                                <label class="layui-form-label">现所属分组：</label>
-                                <div class="layui-input-inline">
-                                    <select name="quiz2">
-                                            <option value="">全部</option>
-                                    </select>
+                                <div class="layui-tab-item">
+                                    <div class="layui-field-box">
+                                                    <form class="layui-form">
+                                                        <div class="layui-form-item">
+                                                                <div class="layui-input-inline" style="display:none;">
+                                                                        <input type="text" name="changetype"  lay-verify="title" autocomplete="off" class="layui-input">
+                                                                </div>
+                                                                <label class="layui-form-label">现职位名称：</label>
+                                                                <div class="layui-input-inline">
+                                                                    <select name="quiz2">
+                                                                            <option value="">全部</option>
+                                                                    </select>
+                                                                </div>
+                                                        </div>
+                                                        <div class="layui-form-item">
+                                                                <label class="layui-form-label">现工资情况：</label>
+                                                                <div class="layui-input-inline">
+                                                                    <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                                                                </div>
+                                                                <label class="layui-form-label">现社保福利及补贴：</label>
+                                                                <div class="layui-input-inline">
+                                                                    <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                                                                </div>
+                                                                <label class="layui-form-label">现合同起止：</label>
+                                                                <div class="layui-input-inline">
+                                                                    <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                                                                </div>
+                                                        </div>
+                                                        <div class="layui-form-item">
+                                                                <label class="layui-form-label">现职位情况：</label>
+                                                                <div class="layui-input-block">
+                                                                        <input type="radio" name="sex" value="岗位人员调离" title="岗位人员调离" checked="">
+                                                                        <input type="radio" name="sex" value="同岗位编制内增加" title="同岗位编制内增加">
+                                                                        <input type="radio" name="sex" value="现职位空缺" title="现职位空缺">
+                                                                </div>
+                                                        </div>
+                                                        <div class="layui-form-item">
+                                                                <label class="layui-form-label">异动说明：</label>
+                                                                <div class="layui-input-block">
+                                                                    <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                                                </div>
+                                                        </div>
+                                                        <div class="layui-form-item">
+                                                            <button class="layui-btn" lay-submit lay-filter="addchangework" style="margin-left:150px;">确认</button>
+                                                            <button class="layui-btn layui-btn-normal closechange">关闭</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                    </div>
+                                <div class="layui-tab-item">
+                                        <div class="layui-field-box">
+                                                <form class="layui-form">
+                                                    <div class="layui-form-item">
+                                                            <div class="layui-input-inline" style="display:none;">
+                                                                <input type="text" name="changetype"  lay-verify="title" autocomplete="off" class="layui-input">
+                                                            </div>
+                                                    </div>
+                                                    <div class="layui-form-item">
+                                                            <label class="layui-form-label">现工资情况：</label>
+                                                            <div class="layui-input-inline">
+                                                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                                                            </div>
+                                                            <label class="layui-form-label">现社保福利及补贴：</label>
+                                                            <div class="layui-input-inline">
+                                                                <input type="text" name="money" value="10000"  lay-verify="title" autocomplete="off" class="layui-input">
+                                                            </div>
+                                                            <label class="layui-form-label">现合同起止：</label>
+                                                            <div class="layui-input-inline">
+                                                                <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
+                                                            </div>
+                                                    </div>
+                                                    <div class="layui-form-item">
+                                                            <label class="layui-form-label">异动说明：</label>
+                                                            <div class="layui-input-block">
+                                                                <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
+                                                            </div>
+                                                    </div>
+                                                    <div class="layui-form-item">
+                                                        <button class="layui-btn" lay-submit lay-filter="addchangework" style="margin-left:150px;">确认</button>
+                                                        <button class="layui-btn layui-btn-normal closechange">关闭</button>
+                                                    </div>
+                                                </form>
+                                            </div>
                                 </div>
-                        </div>
-                        <div class="layui-form-item">
-                                <label class="layui-form-label">现工资情况：</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
                                 </div>
-                                <label class="layui-form-label">现社保福利及补贴：</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
-                                </div>
-                                <label class="layui-form-label">现合同起止：</label>
-                                <div class="layui-input-inline">
-                                    <input type="text" name="name"  lay-verify="title" autocomplete="off" class="layui-input">
-                                </div>
-                        </div>
-                        <div class="layui-form-item">
-                                <label class="layui-form-label">现职位情况：</label>
-                                <div class="layui-input-block">
-                                        <input type="radio" name="sex" value="岗位人员调离" title="岗位人员调离" checked="">
-                                        <input type="radio" name="sex" value="同岗位编制内增加" title="同岗位编制内增加">
-                                        <input type="radio" name="sex" value="现职位空缺" title="现职位空缺">
-                                </div>
-                        </div>
-                        <div class="layui-form-item">
-                                <label class="layui-form-label">异动说明：</label>
-                                <div class="layui-input-block">
-                                    <textarea name="desc" placeholder="请输入内容" class="layui-textarea"></textarea>
-                                </div>
-                        </div>
-                        <div class="layui-form-item">
-                            <button class="layui-btn" lay-submit lay-filter="addchangework" style="margin-left:150px;">确认</button>
-                        </div>
-                    </form>
+                            </div>
+                    </div>    
                 </div>
+                        
+                
+
         </fieldset>
     </script>
     <script>
-        layui.use(['form','laydate','table','layer'],function(){
+        layui.use(['form','laydate','table','layer','element'],function(){
             var form = layui.form,
             laydate = layui.laydate,
             table = layui.table,
-            layer = layui.layer;
+            layer = layui.layer,
+            element = layui.element;
 
             // 监听查询事件
             form.on('submit(workchangesearch)',function(obj){
@@ -183,11 +289,11 @@
             });
 
             // 监听确认员工变动信息列表
-            form.on('submit(addchangework)',function(){
-                console.log('aa');
+            form.on('submit(addchangework)',function(obj){
+                console.log(obj.field);
+                layer.closeAll();
                 return false;
             });
-
 
             laydate.render({
                 elem:'#changedate',
@@ -220,6 +326,13 @@
             // 监听添加按钮事件
             $('.workerchangeadd').on('click',function(){
                 var workchangecontent = $('#addworkerchange').html();
+                // layer.open({
+                //     type:1,
+                //     title:'添加员工调用信息',
+                //     content:workchangecontent,
+                //     area:['1080px','800px'],
+                //     closeBtn:1
+                // });
                 layer.open({
                     type:1,
                     title:'添加员工调用信息',
@@ -231,6 +344,11 @@
             });
 
             form.render();
+
+            $(document).on('click','.closechange',function(e){
+                e.preventDefault();
+                layer.closeAll();
+            })
 
         })
     </script>
