@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/haitaodesign/SingleAdmin/issues"
   },
-  "homepage": "https://github.com/haitaodesign/SingleAdmin#readme"
+  "homepage": "https://github.com/haitaodesign/SingleAdmin#readme",
+  "dependencies": {
+    "lite-uploader": "^5.0.2"
+  }
 }
