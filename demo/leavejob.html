@@ -43,7 +43,7 @@
                         <div class="layui-input-inline">
                             <input type="text" name="title" lay-verify="title" placeholder="请输入工号或姓名" autocomplete="off" class="layui-input">
                         </div>
-                        <button class="layui-btn" lay-submit lay-filter="newleavejobsearch">查询</button>
+                        <button class="layui-btn" lay-submit  lay-filter="newleavejobsearch">查询</button>
                 </div>
         </form>
         <hr />
@@ -124,6 +124,9 @@
                 // 离职列表查询
                 form.on('submit(leavejobsearch)',function(data){
                     console.log(data);
+                    leavejobtableins.reload({
+                        where:data.field
+                    });
                     return false;
                 });
 
@@ -147,15 +150,16 @@
                 // 查询需要离职人员工号
                 form.on('submit(newleavejobsearch)',function(data){
                     console.log(data);
-
+                    
                     // 查询成功之后将返回的离职人员数据写入下面输入框
-
+                    
                     return false;
                 });
 
                 // 确认添加离职人员
                 form.on('submit(addleavejob)',function(data){
-                    console.log(data);
+                    // console.log(data);
+                    
                     return false;
                 });
 

@@ -5,11 +5,168 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Home</title>
+    <style>
+        .home{
+            margin-right: 10px;
+        }
+       
+        .card{
+            border: 1px solid #dddddd;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 120px;
+            text-align: center;
+            /* line-height: 100px; */
+            box-shadow: 2px 2px 1px #f5f5f5;
+
+        }
+        .card-title{
+            height: 50px;
+            border-bottom: 1px solid #dddddd;
+            text-align: center;
+            line-height: 50px;
+            background-color: #f5f5f5;
+            font-size: 18px;
+        }
+        .card-body{
+            height: 70px;
+            line-height: 70px;
+            font-size: 16px;
+        }
+        .card-body:hover{
+            color: #5FB878;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>我是首页</h1>
+    <div class="home">
+            <div class="layui-row layui-col-space30">
+                    <div class="layui-col-md3">
+                        <div class="card">
+                            <div class="card-title">待处理入职</div>
+                            <div class="card-body">
+                                8人待处理
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md3">
+                        <div class="card">
+                            <div class="card-title">待处理转正</div>
+                            <div class="card-body">
+                                content
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md3">
+                        <div class="card">
+                            <div class="card-title">待处理离职</div>
+                            <div class="card-body">
+                                content
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-col-md3">
+                            <div class="card">
+                                <div class="card-title">待处理入职</div>
+                                <div class="card-body">
+                                    content
+                                </div>
+                            </div>
+                    </div>
+                </div>
+    </div>
+        
 </body>
 <script>
-    
+    layui.use(['table','ajaxhtml'],function(){
+        var table = layui.table,
+        ajaxhtml = layui.ajaxhtml;
+        
+        // 待处理入职
+        table.render({
+            elem:'#waitdealentry',
+            url:'',
+            cols:[[
+                {field:'id',title:'姓名',width:100},
+                {field:'name',title:'性别',width:100},
+                {field:'dept',title:'部门',width:150},
+                {field:'position',title:'所属分组',width:120},
+                {field:'fulltimedate',title:'职位',width:120},
+                {field:'classify', title: '入职日期', width:150},
+                {field:'wealth', title: '手机号',  width:150},
+                {field:'weixinorqq',title:'邮箱',width:120},
+                {field:'weixinorqq',title:'微信/QQ',width:120},
+                {field:'weixinorqq',title:'入职状态',width:120}
+            ]],
+        });
+
+        // 待处理转正
+        table.render({
+            elem:'#waitdealfull',
+            url:'',
+            cols:[[
+                {field:'id',title:'姓名',width:100},
+                {field:'name',title:'性别',width:100},
+                {field:'dept',title:'部门',width:150},
+                {field:'position',title:'所属分组',width:120},
+                {field:'fulltimedate',title:'职位',width:120},
+                {field:'classify', title: '入职日期', width:150},
+                {field:'wealth', title: '手机号',  width:150},
+                {field:'weixinorqq',title:'邮箱',width:120},
+                {field:'weixinorqq',title:'微信/QQ',width:120},
+                {field:'weixinorqq',title:'入职状态',width:120}
+            ]]
+        });
+
+        // 待处理离职
+        table.render({
+            elem:'#waitdealleave',
+            url:'',
+            cols:[[
+                {field:'id',title:'姓名',width:100},
+                {field:'name',title:'性别',width:100},
+                {field:'dept',title:'部门',width:150},
+                {field:'position',title:'所属分组',width:120},
+                {field:'fulltimedate',title:'职位',width:120},
+                {field:'classify', title: '入职日期', width:150},
+                {field:'wealth', title: '手机号',  width:150},
+                {field:'weixinorqq',title:'邮箱',width:120},
+                {field:'weixinorqq',title:'微信/QQ',width:120},
+                {field:'weixinorqq',title:'入职状态',width:120}
+            ]],
+        });
+
+        // 待处理报告
+        table.render({
+            elem:'#waitdealreport',
+            url:'',
+            cols:[[
+                {field:'id',title:'姓名',width:100},
+                {field:'name',title:'性别',width:100},
+                {field:'dept',title:'部门',width:150},
+                {field:'position',title:'所属分组',width:120},
+                {field:'fulltimedate',title:'职位',width:120},
+                {field:'classify', title: '入职日期', width:150},
+                {field:'wealth', title: '手机号',  width:150},
+                {field:'weixinorqq',title:'邮箱',width:120},
+                {field:'weixinorqq',title:'微信/QQ',width:120},
+                {field:'weixinorqq',title:'入职状态',width:120}
+            ]],
+        })
+        $(document).on('click','.checkmore',function(){
+            var $this = $(this),
+            url = $this.data().url;
+            // 获取url,加载对应页面
+            if(url!==""){
+                ajaxhtml.pageLoad(url);
+            }else{
+                return;
+            }
+
+
+
+        })
+    })
 </script>
 </html>
