@@ -124,8 +124,12 @@
                 // 离职列表查询
                 form.on('submit(leavejobsearch)',function(data){
                     console.log(data);
+                    var param =data.field.title;
+                    console.log(data.field);
                     leavejobtableins.reload({
-                        where:data.field
+                        where:{
+                            title:param
+                        }
                     });
                     return false;
                 });

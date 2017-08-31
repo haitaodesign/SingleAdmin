@@ -101,7 +101,6 @@
                 </div>
             </div>
     </div>
-        
 </body>
 <script>
     layui.use(['table','ajaxhtml','homechart','laydate'],function(){
@@ -136,9 +135,6 @@
 
         // echarts图表初始化
         var workerchangeChart = echarts.init(document.getElementById('changechart'));
-
-        // 指定图表的配置项和数据
-
         workerchangeChart.setOption({
             title: {
                 text: '员工异动数据统计'
@@ -168,10 +164,6 @@
                 })
             });
         }
-
-
-
-        
     })
 </script>
 </html>

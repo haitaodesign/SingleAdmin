@@ -27,7 +27,7 @@ layui.config({
         localname = $element.context.localName;
         $layui_breadcrumb = $('.layui-breadcrumb');
         if(localname==='li'){
-            $layui_breadcrumb.html("<a href='/aaa'>"+navtitle+"</a>")
+            $layui_breadcrumb.html("<a href='javascript:;'>"+navtitle+"</a>")
         }else if(localname === 'dd'){
             var bdarr=[],bdstr;
             var curtext=$($element.parent().parent().children()[0]).text();

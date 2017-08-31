@@ -38,9 +38,10 @@
                 <table class="layui-hide" id="fulltime-manage" lay-filter="fulltime"></table>
         </div>
         <script>
-            layui.use(['form','table'],function(){
+            layui.use(['form','table','laydate'],function(){
                 var form = layui.form,
-                table = layui.table;
+                table = layui.table,
+                laydate = layui.laydate;
 
                 var fulltimetableins = table.render({
                     elem:'#fulltime-manage',
@@ -64,6 +65,10 @@
                     return false;
                 })
 
+                laydate.render({
+                    elem:'#inducdate',
+                    range:true
+                })
                 form.render();
             })
         </script>

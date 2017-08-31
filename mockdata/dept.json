@@ -1,0 +1,17 @@
+{
+    "code": 0,
+    "data": [
+        {
+            "id": 1,
+            "departmentid": 1,
+            "department": "数据中心"
+        },
+        {
+            "id": 2,
+            "departmentid": 2,
+            "department": "技术中心"
+        }
+    ],
+    "msg": "所有部门",
+    "count": 0
+}
