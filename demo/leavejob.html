@@ -152,14 +152,13 @@
                     console.log(data);
                     
                     // 查询成功之后将返回的离职人员数据写入下面输入框
-                    
                     return false;
                 });
 
                 // 确认添加离职人员
                 form.on('submit(addleavejob)',function(data){
                     // console.log(data);
-                    
+                    layer.closeAll();
                     return false;
                 });
 
@@ -170,7 +169,7 @@
                         // 点击确认之后进行相应的操作
                         console.log('leave');
                     }else if(obj.event === 'enter-cancel'){
-                        console.log('cancel')
+                        console.log('cancel');
                     }
                 })
 

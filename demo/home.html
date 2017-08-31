@@ -7,12 +7,12 @@
     <title>Home</title>
     <style>
         .home{
-            margin-right: 10px;
+            padding-right: 10px;
         }
        
         .card{
             border: 1px solid #dddddd;
-            border-radius: 10px;
+            border-radius: 5px;
             overflow: hidden;
             height: 120px;
             text-align: center;
@@ -37,15 +37,32 @@
             color: #5FB878;
             cursor: pointer;
         }
+        .chartcard{
+            position: relative;
+            border: 1px solid #dddddd;
+            border-radius: 5px;
+            box-shadow: 2px 2px 1px #f5f5f5;
+        }
+        #countdate{
+            position: absolute;
+            width: 150px;
+            float: right;
+            margin: 10px 10px 0  0;
+            right: 0;
+            z-index: 2;
+        }
+        #changechart{
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
     <div class="home">
-            <div class="layui-row layui-col-space30">
+            <div class="layui-row layui-col-space20">
                     <div class="layui-col-md3">
                         <div class="card">
                             <div class="card-title">待处理入职</div>
-                            <div class="card-body">
+                            <div class="card-body checkmore" data-url="/demo/InductionManagement.html">
                                 8人待处理
                             </div>
                         </div>
@@ -53,120 +70,108 @@
                     <div class="layui-col-md3">
                         <div class="card">
                             <div class="card-title">待处理转正</div>
-                            <div class="card-body">
-                                content
+                            <div class="card-body checkmore" data-url="/demo/tofulltime.html">
+                                8人待处理
                             </div>
                         </div>
                     </div>
                     <div class="layui-col-md3">
                         <div class="card">
                             <div class="card-title">待处理离职</div>
-                            <div class="card-body">
-                                content
+                            <div class="card-body checkmore" data-url="/demo/leavejob.html">
+                                8人待处理
                             </div>
                         </div>
                     </div>
                     <div class="layui-col-md3">
-                            <div class="card">
-                                <div class="card-title">待处理入职</div>
-                                <div class="card-body">
-                                    content
-                                </div>
+                        <div class="card">
+                            <div class="card-title">预留</div>
+                            <div class="card-body checkmore">
+                                木有数据
                             </div>
+                        </div>
                     </div>
                 </div>
+            <div class="layui-row layui-col-space20">
+                <div class="layui-col-md4">
+                    <div class="chartcard">
+                        <input type="text" class="layui-input" id="countdate" placeholder="请选择年月">
+                        <div id="changechart" style="width:100%;height:300px;"></div>
+                    </div>
+                </div>
+            </div>
     </div>
         
 </body>
 <script>
-    layui.use(['table','ajaxhtml'],function(){
+    layui.use(['table','ajaxhtml','homechart','laydate'],function(){
         var table = layui.table,
-        ajaxhtml = layui.ajaxhtml;
-        
-        // 待处理入职
-        table.render({
-            elem:'#waitdealentry',
-            url:'',
-            cols:[[
-                {field:'id',title:'姓名',width:100},
-                {field:'name',title:'性别',width:100},
-                {field:'dept',title:'部门',width:150},
-                {field:'position',title:'所属分组',width:120},
-                {field:'fulltimedate',title:'职位',width:120},
-                {field:'classify', title: '入职日期', width:150},
-                {field:'wealth', title: '手机号',  width:150},
-                {field:'weixinorqq',title:'邮箱',width:120},
-                {field:'weixinorqq',title:'微信/QQ',width:120},
-                {field:'weixinorqq',title:'入职状态',width:120}
-            ]],
-        });
-
-        // 待处理转正
-        table.render({
-            elem:'#waitdealfull',
-            url:'',
-            cols:[[
-                {field:'id',title:'姓名',width:100},
-                {field:'name',title:'性别',width:100},
-                {field:'dept',title:'部门',width:150},
-                {field:'position',title:'所属分组',width:120},
-                {field:'fulltimedate',title:'职位',width:120},
-                {field:'classify', title: '入职日期', width:150},
-                {field:'wealth', title: '手机号',  width:150},
-                {field:'weixinorqq',title:'邮箱',width:120},
-                {field:'weixinorqq',title:'微信/QQ',width:120},
-                {field:'weixinorqq',title:'入职状态',width:120}
-            ]]
-        });
-
-        // 待处理离职
-        table.render({
-            elem:'#waitdealleave',
-            url:'',
-            cols:[[
-                {field:'id',title:'姓名',width:100},
-                {field:'name',title:'性别',width:100},
-                {field:'dept',title:'部门',width:150},
-                {field:'position',title:'所属分组',width:120},
-                {field:'fulltimedate',title:'职位',width:120},
-                {field:'classify', title: '入职日期', width:150},
-                {field:'wealth', title: '手机号',  width:150},
-                {field:'weixinorqq',title:'邮箱',width:120},
-                {field:'weixinorqq',title:'微信/QQ',width:120},
-                {field:'weixinorqq',title:'入职状态',width:120}
-            ]],
-        });
-
-        // 待处理报告
-        table.render({
-            elem:'#waitdealreport',
-            url:'',
-            cols:[[
-                {field:'id',title:'姓名',width:100},
-                {field:'name',title:'性别',width:100},
-                {field:'dept',title:'部门',width:150},
-                {field:'position',title:'所属分组',width:120},
-                {field:'fulltimedate',title:'职位',width:120},
-                {field:'classify', title: '入职日期', width:150},
-                {field:'wealth', title: '手机号',  width:150},
-                {field:'weixinorqq',title:'邮箱',width:120},
-                {field:'weixinorqq',title:'微信/QQ',width:120},
-                {field:'weixinorqq',title:'入职状态',width:120}
-            ]],
-        })
+        ajaxhtml = layui.ajaxhtml,
+        homechart = layui.homechart,
+        laydate = layui.laydate;
+     
+        // 待处理卡片点击事件
         $(document).on('click','.checkmore',function(){
             var $this = $(this),
             url = $this.data().url;
             // 获取url,加载对应页面
-            if(url!==""){
+            console.log(url);
+            if(url!=="" && url!==undefined){
                 ajaxhtml.pageLoad(url);
             }else{
                 return;
             }
+        });
 
-
-
+        laydate.render({
+            elem:'#countdate',
+            type:'month',
+            done:function(value,date,endDate){
+                var param={
+                    date:value
+                };
+                loadchartdata(param);
+            }
         })
+
+        // echarts图表初始化
+        var workerchangeChart = echarts.init(document.getElementById('changechart'));
+
+        // 指定图表的配置项和数据
+
+        workerchangeChart.setOption({
+            title: {
+                text: '员工异动数据统计'
+            },
+            xAxis: {
+                data: ["入职","转正","离职","内部调动"]
+            },
+            yAxis: {},
+            series: [{
+                name: '销量',
+                type: 'bar',
+                data: []
+            }]  
+        })
+        // 异步加载数据
+
+        loadchartdata({});
+
+        function loadchartdata(params,url){
+            $.get('/mockdata/changechart.json',params,function(result){
+                var data = result.data;
+                workerchangeChart.setOption({
+                    series:[{
+                        name:'销量',
+                        data:data
+                    }]
+                })
+            });
+        }
+
+
+
+        
     })
 </script>
 </html>
