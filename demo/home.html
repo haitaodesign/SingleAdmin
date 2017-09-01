@@ -136,6 +136,13 @@
         // echarts图表初始化
         var workerchangeChart = echarts.init(document.getElementById('changechart'));
         workerchangeChart.setOption({
+            color:['#009688'],
+            tooltip : {
+                trigger: 'axis',
+                axisPointer : {            // 坐标轴指示器，坐标轴触发有效
+                    type : 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+                }
+            },
             title: {
                 text: '员工异动数据统计'
             },
@@ -144,8 +151,9 @@
             },
             yAxis: {},
             series: [{
-                name: '销量',
+                name: '人数',
                 type: 'bar',
+                barWidth:'50%',
                 data: []
             }]  
         })
@@ -158,7 +166,7 @@
                 var data = result.data;
                 workerchangeChart.setOption({
                     series:[{
-                        name:'销量',
+                        name:'人数',
                         data:data
                     }]
                 })
