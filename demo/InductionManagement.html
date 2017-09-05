@@ -129,19 +129,309 @@
         </form>
     </script>
     <script type="text/html" id="entryopertion">
-        <a class="layui-btn layui-btn-mini" lay-event="enter-entry">确认</a>
+        <a class="layui-btn layui-btn-mini" lay-event="entry-shenhe">审核</a>
         <a class="layui-btn layui-btn-danger layui-btn-mini" lay-event="delete">删除</a>
     </script>
+    <script type="text/html" id="reportshenhe">
+       <div class="layui-container">
+            <fieldset class="layui-elem-field">
+                    <legend>基本信息</legend>
+                    <div class="layui-field-box">
+                            <table class="layui-table">
+                                <tbody>
+                                    <tr>
+                                        <td>公司</td>
+                                        <td></td>
+                                        <td>录取岗位</td>
+                                        <td></td>
+                                        <td>入职时间</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>姓名</td>
+                                        <td>{{ d.username}}</td>
+                                        <td>性别</td>
+                                        <td></td>
+                                        <td>出生日期</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>籍贯</td>
+                                        <td></td>
+                                        <td>民族</td>
+                                        <td></td>
+                                        <td>最高学历</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>现居住地</td>
+                                        <td></td>
+                                        <td>户籍</td>
+                                        <td></td>
+                                        <td>婚姻状况</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>体重</td>
+                                        <td></td>
+                                        <td>政治面貌</td>
+                                        <td></td>
+                                        <td>健康状况</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>身高</td>
+                                        <td></td>
+                                        <td>E-mail</td>
+                                        <td></td>
+                                        <td>身份证号</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>联系电话</td>
+                                        <td></td>
+                                        <td>微信号/QQ</td>
+                                        <td></td>
+                                        <td>驾驶执照</td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td>兴趣爱好</td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                    </div>
+            </fieldset>
+            <fieldset class="layui-elem-field">
+                    <legend>教育背景</legend>
+                    <div class="layui-field-box">
+                            <table class="layui-table">
+                                    <colgroup>
+                                        <col>
+                                        <col>
+                                        <col>
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th>时间</th>
+                                        <th>学校</th>
+                                        <th>专业</th>
+                                        <th>取得证书</th>
+                                    </tr> 
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                       <th></th>
+                                       <th></th>
+                                       <th></th>
+                                       <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    </tbody>
+                            </table>
+                    </div>
+            </fieldset>
+            <fieldset class="layui-elem-field">
+                    <legend>培训经历</legend>
+                    <div class="layui-field-box">
+                            <table class="layui-table">
+                                    <colgroup>
+                                        <col>
+                                        <col>
+                                        <col>
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th>培训起始时间</th>
+                                        <th>培训课程</th>
+                                        <th>课程内容概述</th>
+                                        <th>培训讲师</th>
+                                    </tr> 
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                       <th></th>
+                                       <th></th>
+                                       <th></th>
+                                       <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    </tbody>
+                            </table>
+                    </div>
+            </fieldset>
+            <fieldset class="layui-elem-field">
+                    <legend>工作经历</legend>
+                    <div class="layui-field-box">
+                            <table class="layui-table">
+                                    <colgroup>
+                                        <col>
+                                        <col>
+                                        <col>
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th>任职时间</th>
+                                        <th>任职单位</th>
+                                        <th>所在岗位</th>
+                                        <th>离职原因</th>
+                                        <th>最后薪资</th>
+                                        <th>证明人/电话</th>
+                                    </tr> 
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                       <th></th>
+                                       <th></th>
+                                       <th></th>
+                                       <th></th>
+                                       <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    </tbody>
+                            </table>
+                    </div>
+            </fieldset>
+            <fieldset class="layui-elem-field">
+                    <legend>家庭成员</legend>
+                    <div class="layui-field-box">
+                            <table class="layui-table">
+                                    <colgroup>
+                                        <col>
+                                        <col>
+                                        <col>
+                                        <col>
+                                    </colgroup>
+                                    <thead>
+                                    <tr>
+                                        <th>关系</th>
+                                        <th>姓名</th>
+                                        <th>生日</th>
+                                        <th>工作单位</th>
+                                        <th>联系电话</th>
+                                        <th>评价</th>
+                                    </tr> 
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                       <th></th>
+                                       <th></th>
+                                       <th></th>
+                                       <th></th>
+                                       <th></th>
+                                       <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    <tr>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                    </tbody>
+                            </table>
+                    </div>
+            </fieldset>
+            <fieldset class="layui-elem-field">
+                    <legend>其他</legend>
+                    <div class="layui-field-box">
+                            <table class="layui-table">
+                                    <tbody>
+                                    <tr>
+                                       <th>紧急联系人</th>
+                                       <th></th>
+                                       <th>关系</th>
+                                       <th></th>
+                                       <th>联系电话</th>
+                                       <th></th>
+                                       <th>本人签名</th>
+                                       <th></th>
+                                    </tr>
+                                    </tbody>
+                            </table>
+                    </div>
+            </fieldset>
+            <fieldset class="layui-elem-field">
+                    <legend>附件</legend>
+                    <div class="layui-field-box">
+                            <table class="layui-table">
+                                    <tbody>
+                                    <tr>
+                                       <th>学历证明</th>
+                                       <th><a target="_blank" href="" style="color:blue;">学历证明</a></th>
+                                       <th>身份证复印件</th>
+                                       <th><a target="_blank" href="" style="color:blue;">身份证复印件</a></th>
+                                       <th>银行卡复印件</th>
+                                       <th><a target="_blank" href="" style="color:blue;">银行卡复印件</a></th>
+                                       <th>离职证明</th>
+                                       <th><a target="_blank" href="/mockdata/es6base.pdf" style="color:blue;">离职证明</a></th>
+                                    </tr>
+                                    </tbody>
+                            </table>
+                    </div>
+            </fieldset>
+       </div>
+        
+    </script>
       <script>
-          layui.use(['table','form','laydate','layer','selectinit'],function(){
+          layui.use(['table','form','laydate','layer','selectinit','laytpl'],function(){
               var table = layui.table,
               form=layui.form,
               laydate = layui.laydate,
               layer = layui.layer,
+              laytpl = layui.laytpl,
               selectinit = layui.selectinit;
               var entrytableins = table.render({
                 elem: '#induction-manage',
-                url:'/mockdata/testdata.json',
+                url:'http://192.168.3.26:5526/show/hireemp.htmls',
                   cols: [[
                   {field:'username', title: '姓名', width:90}
                   ,{field:'sex', title: '性别', width:60}
@@ -149,7 +439,7 @@
                   ,{field:'sign', title: '所属分组', width:150}
                   ,{field:'experience', title: '职位', width:150}
                   ,{field:'score', title: '入职日期',  width:120}
-                  ,{field:'classify', title: '手机号', width:150}
+                  ,{field:'phone', title: '手机号', width:150}
                   ,{field:'wealth', title: '邮箱',  width:150}
                   ,{field:'wealth', title: '微信/QQ',width:135}
                   ,{field:'wealth', title: '入职状态',width:100}
@@ -178,10 +468,10 @@
                     elem: '#entrydate'
                     ,range: false
                 });
-                console.log($('#departadd'));
+                // console.log($('#departadd'));
                 selectinit.selectdeptoption($('#departadd'),
                 'http://192.168.31.157:8080/show/all/dep.htmls',{},form);
-                selectinit.selectgrouption
+                // selectinit.selectgrouption
 
                 form.render();
             })
@@ -193,10 +483,39 @@
 
             // 监听列表操作工具栏事件
             table.on('tool(indmanage)',function(obj){
-                console.log(obj);
                 var data = obj.data;
-                if(obj.event ==='enter-entry'){
-                    // 点击确认之后进行相应的操作
+
+
+                if(obj.event ==='entry-shenhe'){
+                    var $reportshenhe = $('#reportshenhe').html();
+                    // 根据电话号码和姓名获取基本信息数据
+                    var params={
+                        username:data.username,
+                        phone:data.phone
+                    };
+                    $.post('http://192.168.3.26:5526/show/user/regreport.htmls',params,function(result){
+                        console.log(result.data[0]);
+                        var gettpl = reportshenhe.innerHTML;
+                        // console.log(gettpl);
+                        laytpl(gettpl).render(result.data[0],function(html){
+                            var index = layer.open({
+                                type:1,
+                                title:'审核入职信息',
+                                content:html,
+                                area:['1000px','670px'],
+                                maxmin: true,
+                                btn:['通过审核'],
+                                yes:function(index,layero){
+                                    
+                                }
+                            });
+                            layer.full(index);
+                        });
+
+                    });
+                    
+                   
+
                 }else if(obj.event === 'delete'){
                     console.log('delete')
                 }
